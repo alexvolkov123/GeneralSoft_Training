@@ -10,6 +10,9 @@ a{
 li{
 	list-style: none;
 }
+.red{
+    color: #e84c3d;
+}
 header{
     width: 100%;
     height: 80px;
@@ -51,9 +54,11 @@ header{
     color: #e7e7e7;
     font-size: 12px;
 }
+
+/*первая секция*/
 .main_foto{
     background: url(img/main.png);
-    background-size:cover;
+    background-size: cover;
     height: 560px;
     width: 100%;
     display: flex;
@@ -78,7 +83,7 @@ header{
 .main_content span{
     color: #e84c3d;
     font-size: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 .circle{
     display: flex;
@@ -86,4 +91,36 @@ header{
 }
 .circle img{
     margin-right: 3px;
+}
+
+/*вторая секция*/
+.about{
+    width: 100%;
+    height: 275px;
+    background-color: #e7e7e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.set_of_blogs{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+.blog{
+    width: 33.3%;
+    display: flex;
+}
+.image{
+    margin: 0px 20px;
+}
+.heading{
+    font-size: 21px;
+    color: #202628;
+    margin-bottom: 25px;
+}
+.description{
+    font-size: 14px;
+    color: #767c7e;
+    margin-bottom: 25px;
 }
