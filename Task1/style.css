@@ -1,4 +1,4 @@
-/*Общие натройки*/
+/*----------------------------Общие натройки----------------------------*/
 *{
     margin: 0;
     padding: 0;
@@ -16,6 +16,8 @@ li{
 }
 .red{
     color: #e84c3d;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
 }
 .grid{
     width: 1170px;
@@ -24,7 +26,8 @@ li{
     align-items: center;
 }
 
-/*Навигация*/
+/*------------------------Навигация-----------------------------*/
+
 header{
     width: 100%;
     height: 80px;
@@ -60,8 +63,14 @@ header{
     color: #e7e7e7;
     font-size: 12px;
 }
+.set_of_blocks{
+    width: 100%;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+/*-----------------------первая секция-------------------------*/
 
-/*первая секция*/
 .main_foto{
     background: url(img/main.png);
     background-size: cover;
@@ -101,19 +110,14 @@ header{
     margin-right: 3px;
 }
 
-/*вторая секция*/
+/*--------------------вторая секция---------------------*/
+
 .about{
     width: 100%;
     height: 275px;
     background-color: #e7e7e7;
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-.set_of_blogs{
-    
-    display: flex; 
-    justify-content: space-between;
     align-items: center;
 }
 .blog{
@@ -138,19 +142,20 @@ header{
     font-weight: 400;
 }
 
-/*третья секция*/
+/*----------------------третья секция---------------------*/
+
 .portfolio_background{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.portfolio{
     background-color: #fff;
     width: 100%;
     height: 515px;
     padding: 80px 0px;
     display: flex;
     justify-content: center;
-}
-.portfolio{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
 }
 .portfolio_info{
     width: 770px;
@@ -223,13 +228,9 @@ header{
     cursor: pointer;
 }
 
-/*четвертая секция*/
+/*----------------------------четвертая секция----------------------*/
+
 .services_background{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.services{
     width: 100%;
     height: 190px;
     background-color: #e84c3d;
@@ -239,6 +240,11 @@ header{
     align-items: center;
     margin: 20px 0px;
     padding-bottom: 35px;
+}
+.services{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .service_info{
     width: 100%;
@@ -312,5 +318,74 @@ header{
     color: #fff;
     text-align: center;
     margin-right: 40px;
-    cursor: pointer;
+    cursor: pointer
+}
+
+/*--------------------------пятая секция---------------------------*/
+
+.contacts{
+    width: 100%;
+    background-color: #fff;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact_block{
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+}
+.contact_block hr{
+    width: 100%;
+    height: 2px;
+    color: #767c7e;
+    opacity: 0.6;
+}
+.contact_block{
+    width: 100%;
+    max-height: 100%;
+    margin: 30px 0px;
+}
+.contact_block img{
+    /* width: 70px;
+    height: 70px; */
+    border-radius: 50%;
+    margin-right: 30px;
+}
+.contact_img_size img{
+    width: 30px;
+    height: 30px;
+    border-radius: 0px;
+}
+.contact_block:first-child, .contact_block:nth-child(2){
+    margin-right: 30px;
+}
+.contact_heading{
+    text-transform: uppercase;
+    font-size: 21px;
+    color: #202628;
+    margin: 30px 0px;
+}
+.contact_info{
+    width: 100%;
+    display: flex;
+    margin: 30px 0px;
+}
+.contact_info_text{
+    display: flex;
+    flex-direction: column;
+}
+.contact_info_description{
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #767c7e;
+    line-height: 24px;
+}
+.contact_info_heading{
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 24px;
 }
