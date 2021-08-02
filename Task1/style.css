@@ -69,6 +69,7 @@ header{
     color: #e7e7e7;
     font-size: 12px;
     text-decoration: none;
+    text-transform: uppercase;
 }
 .set_of_blocks{
     width: 100%;
