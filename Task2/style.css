@@ -114,7 +114,7 @@ nav{
     align-items: center;
 }
 .services__item-img {
-    min-width: 65px;
+    min-width: 75px;
     height: 100%;
     display: flex;
     justify-content: flex-start;
