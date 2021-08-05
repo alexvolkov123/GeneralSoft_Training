@@ -2,4 +2,172 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+a{
+    text-decoration: none;
+}
+.container {
+    width: 1170px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ------------Навигация----------- */
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+nav{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.nav__logo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 50px;
+    height: 50px;
+}
+.nav__logo img {
+    width: 100%;
+    height: 100%;
+}
+.nav__links {
+    width: 840px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.nav__link {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    transition: 0.5s;
+}
+.link--color {
+    color: #868686;
+}
+.nav__link--size {
+    height: 35px;
+    padding: 0px 20px;
+}
+.nav__link:hover {
+    color: #fff;
+    background-color: #ffbb42;
+    border-radius: 2px;
+}
+/* ---------------Секция Сервисы------------------------- */
+.services {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.services__inner{
+    display: flex;
+    flex-direction: column;
+}
+.services__header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.services__title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+.services__subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    
+}
+.title--black{
+    color: #394b50;
+}
+.title--indent{
+    margin: 80px auto;
+    text-align: center;
+}
+.services__body {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.services__item {
+    max-width: 530px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.services__item-img {
+    min-width: 95px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.services__item-text {
+    display: flex;
+    flex-direction: column;
+}
+.services__item-title {
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+.item-title--indent {
+    margin-bottom: 20px;
+}
+.services__item-subtitle {
+    color: #7b7b7b;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 24px;
+}
+.services__item--indent{
+    margin-bottom: 80px;
+}
+/* ----------------Секция Клиенты------------------- */
+.clients {
+}
+.clients__inner {
+}
+.clients__header {
+}
+.clients__title {
+}
+.title--white {
+}
+.clients__subtitle {
+}
+.clients__body {
+}
+.clients__item {
+}
+.clients_item-img {
+}
+.clients_item-text {
+}
+.clients_item-description {
+}
+.clients__item-quotes {
+}
+.clients_item-autor {
 }
