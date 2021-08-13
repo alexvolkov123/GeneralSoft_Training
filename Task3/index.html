@@ -14,28 +14,81 @@
 <body>
     <header class="header">
         <div class="container">
-            <div class="header_logo">
-                <div class="header_logo-img">
-                    <img src="img/logo.png" alt="картинка">
+            <div class="header_inner">
+                <div class="header_logo">
+                    <div class="header_logo-img">
+                        <img src="img/logo.png" alt="картинка">
+                    </div>
+                    <div class="header_logo-text">TheYalow</div>
+                    <a href="#" class="header_logo-description header_logo-description--indent">Craft By Css author.com</a>
                 </div>
-                <div class="header_logo-text">TheYalow</div>
-                <div class="header_logo-description"><a href="#">Craft By Css author.com</a></div>
-            </div>
-            <div class="header_links">
-                <a href="#" class="header_link">
-                    <img src="img/person.png" alt="картинка">
-                    About Us 
-                </a>
-                <a href="#" class="header_link">
-                    <img src="img/wrench.png" alt="картинка">
-                    Services
-                </a>
-                <a href="#" class="header_link">
-                    <img src="img/letter.png" alt="картинка">
-                    Contact
-                </a>
+                <div class="header_links">
+                    <a href="#" class="header_link header_link--size header_link--color">
+                        <img src="img/person.png" class="header_logo-img header_link-img--indent" alt="картинка">
+                        About Us 
+                    </a>
+                    <a href="#" class="header_link header_link--size header_link--color">
+                        <img src="img/wrench.png" class="header_logo-img header_link-img--indent" alt="картинка">
+                        Services
+                    </a>
+                    <a href="#" class="header_link header_link--size header_link--color">
+                        <img src="img/letter.png" class="header_logo-img header_link-img--indent" alt="картинка">
+                        Contact
+                    </a>
+                </div>
             </div>
         </div>
     </header>
+    <main>
+        <section class="minimal">
+            <div class="container">
+                <div class="minimal_inner">
+                    <p class="minimal_title minimal_title--indent">The cool <br> <span class="minimal_title--white">The minimal</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <div class="about_inner">
+                    <div class="about_column">
+                        <img src="img/cloud.png" alt="картинка" class="about_img">
+                        <p class="about_title">better design</p>
+                    </div>
+                    <div class="about_column">
+                        <img src="img/leaf.png" alt="картинка" class="about_img">
+                        <p class="about_title">customise</p>
+                    </div>
+                    <div class="about_column">
+                        <img src="img/airplane.png" alt="картинка" class="about_img">
+                        <p class="about_title">its free</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <div class="services_inner">
+                    <div class="services_title services_title--indent">Lorem ipsum dolor sit amet.</div>
+                    <div class="services_columns">
+                        <div class="services_column services_column--indent services_column-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</div>
+                        <div class="services_column">
+                            <video controls>
+                                <source src="video/services_video.webm" type="video/webm">
+                                <source src="video/services_video.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="services_column services_column--indent services_column-img">
+                            <img src="img/post-twitter.png" alt="картинка" class="services_img services_column-img--indent">
+                            <div class="services_right-text"             >
+                                <p class="services_twit">22</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
