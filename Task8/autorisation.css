@@ -1,0 +1,106 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Lato;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.container{
+    margin-top: 300px;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sign{
+    display: flex;
+    justify-content: center;
+    border: 2px solid hsl(0, 1%, 68%);
+    border-radius: 15px;
+    width: 80%;
+
+}
+.sign__inner{
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sign p{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 25px;
+    color: #959297;
+}
+.sign p{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 25px;
+    color: #959297;
+}
+.input__fields{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.input__email{
+    height: 35px;
+    border: 1px solid #cacaca;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    padding-left: 15px;
+    width: 100%;
+}
+.input__password{
+    height: 35px;
+    border: 1px solid #cacaca;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    padding-left: 15px;
+    width: 100%;    
+}
+.input__username{
+    height: 35px;
+    border: 1px solid #cacaca;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    padding-left: 15px;
+    width: 100%;    
+}
+.input__field{
+    margin-bottom: 10px;
+}
+.input__button{
+    display: flex;
+    justify-content: center;
+    width: 125px;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #99befa;
+    color: #fff;
+}
+.sign__text{
+    margin-top: 20px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #5c6372;
+} 
+.sign__text a{
+    font-size: 18px;
+    font-weight: 900;
+    color: #541e19;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+}

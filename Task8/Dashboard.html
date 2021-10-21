@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo List</title>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header__text">ToDo List Application</div>
+        <a href="#" class="header__button">logout</a>
+    </div>
+
+    <div class="dashboard">
+        <div class="dashboard__greeting">Welcome, ..., here are your tasks</div>
+        
+        <div class="dashboard__content">
+            <div class="dashboard__filters">
+                <input type="text" placeholder="Search by title..." class="dashboard__filterTitle">
+
+                <select name="status">
+                    <option value="s1">Dones</option>
+                    <option value="s2" >In progress</option>
+                </select> 
+            </div>
+
+            <div class="dashboard__todoList"></div>
+
+            <div class="dashboard__theme">
+                <select name="theme">
+                    <option value="theme1">Red</option>
+                    <option value="theme2" >Dark</option>  
+                    <option value="theme3" >Violet</option>
+                    <option value="theme4" >Chrome</option>
+                </select> 
+            </div>
+        </div>
+
+        <a href="#" class="dashboard__add"><img src="./img/plus-vector-icon.png" alt=""></a>
+    </div>
+
+    <script src="./script/script.js"></script>
+</body>
+</html>
