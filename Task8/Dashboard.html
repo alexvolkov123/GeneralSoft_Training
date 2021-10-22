@@ -22,27 +22,35 @@
         
         <div class="dashboard__content">
             <div class="dashboard__filters">
+
                 <input type="text" placeholder="Search by title..." class="dashboard__filterTitle">
 
-                <select name="status">
-                    <option value="s1">Dones</option>
-                    <option value="s2" >In progress</option>
+                <select name="status" id="status" class="select-css">
+                    <option value="s1" selected>All</option>
+                    <option value="s2">Dones</option> 
+                    <option value="s3">In progress</option>
                 </select> 
             </div>
 
-            <div class="dashboard__todoList"></div>
+            <div class="dashboard__todoList">
+                <ul class="todo"></ul>
+            </div>
 
             <div class="dashboard__theme">
-                <select name="theme">
+                <h3 class="dashboard__theme-text">Application theme</h3>
+
+                <select name="theme" id="theme" class="select-css">
                     <option value="theme1">Red</option>
                     <option value="theme2" >Dark</option>  
                     <option value="theme3" >Violet</option>
                     <option value="theme4" >Chrome</option>
                 </select> 
             </div>
+
+            <a href="#" class="dashboard__add"><img src="./img/plus-vector-icon.png" alt=""></a>
         </div>
 
-        <a href="#" class="dashboard__add"><img src="./img/plus-vector-icon.png" alt=""></a>
+        
     </div>
 
     <script src="./script/script.js"></script>

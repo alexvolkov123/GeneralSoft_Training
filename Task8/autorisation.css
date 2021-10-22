@@ -88,8 +88,11 @@ body{
     border: none;
     border-radius: 10px;
     height: 30px;
-    background-color: #99befa;
+    background-color: #4e8ff8;
     color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
 }
 .sign__text{
     margin-top: 20px;
