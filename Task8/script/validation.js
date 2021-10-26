@@ -1,14 +1,32 @@
-const button = document.querySelector('#validate');
+const registration = document.querySelector('#registration');
 
-let users = [];
+function errors(login, email, password) {
 
-if(localStorage.getItem('users')){
-    users = JSON.parse(localStorage.getItem('users'));
+    lowerCaseLatters = /(?=.*[a-z])/g;
+    upperCaseLatters = /(?=.*[A-Z])/g;
+    numbers = /(?=.*[0-9])/g;
+
+    if(login == '' || password == '' || email == '') {
+        return 'field is empty';
+    }
+    if(validateEmail(email) == false) {
+        return 'Incorrect email address';
+    }
+    if(lowerCaseLatters.test(password) == false) {
+        return 'There is no lower case in the password';
+    }
+    if(upperCaseLatters.test(password) == false) {
+        return 'There is no upper case in the password';
+    }
+    if(numbers.test(password) == false) {
+        return 'There is a digit missing in the password';
+    }
+    return null;
 }
 
 function validateEmail(email) {
     let pattern  = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return pattern .test(email);
+    return pattern.test(email);
 }
 
 function validatePassword(pass) {
@@ -21,32 +39,17 @@ function validateUserName(name) {
     return pattern.test(name);
 }
 
-function validate() {
+function onRegistation() {
     let name = document.querySelector("#username").value;
     let email = document.querySelector("#email").value;
     let password = document.querySelector("#password").value;
 
     if (validateUserName(name) && validateEmail(email) && validatePassword(password)) {
-        isExist(name, email, password);
+        database.addUser(name, email, password);
     } else {
-        //модалька об ошибке данных
-    }
-}
-
-function isExist(name, email, password) {
-
-    if (localStorage.getItem(`${email}`) !== null) {
-        //модальное окно о том, что пользователь уже существует
-    } else {
-        let newUser = new User (name, password, email);
-        
-        users.push(newUser);
-
-        localStorage.setItem('users', JSON.stringify(users));
-        localStorage.setItem(`${email}`, JSON.stringify({}));
+        alert(errors(name, email, password));
     }
 }
 
 
-
-button.addEventListener('click', validate);
+registration.addEventListener('click', onRegistation);

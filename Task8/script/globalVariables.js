@@ -1,0 +1,1 @@
+let database = new Database();
