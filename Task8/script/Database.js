@@ -21,25 +21,33 @@ class Database {
                 tasks: [],
                 theme: 'Dark',
             };
-            
             this.users.push(newUser);
-    
             localStorage.setItem('users', JSON.stringify(this.users));
+
+            helper.redirect('Dashboard.html');
+            //сообщение об успешности входа
         } else {
             console.log('Error, user is exist');
             helper.redirect('sign-in.html');
         }
-    } 
+    }
 
     includes(email) {
         for(let i = 0 ; i < this.users.length ; i++) {
             if(this.users[i].email == email) {
                 return true;
-                //ошибка о существовании пользователя
             }
         }
-
         return false;
     }
 
+    verification(pass) {
+        for(let i = 0 ; i < this.users.length ; i++) {
+            if(this.users[i].password == pass) {
+                localStorage.setItem('userId', i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

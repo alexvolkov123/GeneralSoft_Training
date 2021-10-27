@@ -1,25 +1,29 @@
-const registration = document.querySelector('#registration');
+const button = document.querySelector('#button');
 
-function errors(login, email, password) {
+function errors(email, password, login) {
 
     lowerCaseLatters = /(?=.*[a-z])/g;
     upperCaseLatters = /(?=.*[A-Z])/g;
     numbers = /(?=.*[0-9])/g;
 
-    if(login == '' || password == '' || email == '') {
+    if(login == '' || password == '' || email == '' && login !== null) {
         return 'field is empty';
-    }
-    if(validateEmail(email) == false) {
-        return 'Incorrect email address';
-    }
-    if(lowerCaseLatters.test(password) == false) {
-        return 'There is no lower case in the password';
-    }
-    if(upperCaseLatters.test(password) == false) {
-        return 'There is no upper case in the password';
-    }
-    if(numbers.test(password) == false) {
-        return 'There is a digit missing in the password';
+    } else { 
+        if(validateEmail(email) == false) {
+            return 'Incorrect email address';
+        } else { 
+            if(lowerCaseLatters.test(password) == false) {
+                return 'There is no lower case in the password';
+            } else {
+                if(upperCaseLatters.test(password) == false) {
+                    return 'There is no upper case in the password';
+                } else { 
+                    if(numbers.test(password) == false) {
+                        return 'There is a digit missing in the password';
+                    }
+                }
+            }
+        }
     }
     return null;
 }
@@ -35,21 +39,8 @@ function validatePassword(pass) {
 }
 
 function validateUserName(name) {
-    let pattern = /(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z!@#$%^&*]{3,}/g;
+    let pattern = /(?=.*[a-z])[0-9a-zA-Z!@#$%^&*]{3,}/g;
     return pattern.test(name);
 }
 
-function onRegistation() {
-    let name = document.querySelector("#username").value;
-    let email = document.querySelector("#email").value;
-    let password = document.querySelector("#password").value;
-
-    if (validateUserName(name) && validateEmail(email) && validatePassword(password)) {
-        database.addUser(name, email, password);
-    } else {
-        alert(errors(name, email, password));
-    }
-}
-
-
-registration.addEventListener('click', onRegistation);
+button.addEventListener('click', helper.distribution);

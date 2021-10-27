@@ -9,6 +9,9 @@ if(localStorage.getItem('todo')){
     displayMessages();
 }
 
+const greeting = document.querySelector('.dashboard__greeting');
+greeting.innerHTML = `Welcome, ${database.users[id].userName}, here are your tasks`;
+
 addButton.addEventListener('click', function(){
 
     let newTask = {
@@ -35,6 +38,8 @@ function displayMessages(){
         todo.innerHTML = displayMessage;
     });
 }
+
+
 
 //если в нашем списке задач что-то изменяется, то мы узнаем что изменилось
 todo.addEventListener('change', function(event) {
