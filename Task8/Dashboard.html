@@ -14,7 +14,7 @@
 
     <div class="header">
         <div class="header__text">ToDo List Application</div>
-        <a href="#" class="header__button">logout</a>
+        <div class="header__button">logout</div>
     </div>
 
     <div class="dashboard">
@@ -32,9 +32,9 @@
                 </select> 
             </div>
 
-            <div class="dashboard__todoList">
-                <ul class="todo"></ul>
-            </div>
+            <ul class="dashboard__todoList">
+                
+            </ul>
 
             <div class="dashboard__theme">
                 <h3 class="dashboard__theme-text">Application theme</h3>
@@ -47,12 +47,21 @@
                 </select> 
             </div>
 
-            <a href="#" class="dashboard__add"><img src="./img/plus-vector-icon.png" alt=""></a>
+            <button class="dashboard__add"><img src="./img/plus-vector-icon.png" alt=""></button>
         </div>
 
+        <div class="modal">
+            <div class="modal__wrap">
+                <h2 class="modal__text">Add new Task</h2>
+                <input required id="title" class="modal__title" placeholder="title...">
+                <textarea required id="description" class="modal__description" placeholder="description..."></textarea>
+                <div id="save" class="modal__button">Save</div>
+            </div>
+        </div>
         
     </div>
 
+    <script src="./script/Tasks.js"></script>
     <script src="./script/helper.js"></script>
     <script src="./script/Database.js"></script>
     <script src="./script/globalVariables.js"></script>

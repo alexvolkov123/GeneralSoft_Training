@@ -1,6 +1,8 @@
 class Database {
     constructor() {
         this.users = this.getUsers();
+        this.userId = this.getUserId();
+        this.user = this.users[this.userId];
     }
 
     getUsers() {
@@ -10,6 +12,15 @@ class Database {
             return [];
         }
         return this.users;
+    }
+
+    getUserId() {
+        if(localStorage.getItem('userId') !== null) {
+            this.userId = localStorage.getItem('userId');
+        } else {
+            return -1;
+        }
+        return this.userId;
     }
 
     addUser(name, email, pass) {
@@ -23,9 +34,9 @@ class Database {
             };
             this.users.push(newUser);
             localStorage.setItem('users', JSON.stringify(this.users));
-
+            localStorage.setItem('userId', JSON.stringify(this.users.length -1));
             helper.redirect('Dashboard.html');
-            //сообщение об успешности входа
+
         } else {
             console.log('Error, user is exist');
             helper.redirect('sign-in.html');
@@ -41,13 +52,32 @@ class Database {
         return false;
     }
 
-    verification(pass) {
+    verification(email, pass) {
         for(let i = 0 ; i < this.users.length ; i++) {
-            if(this.users[i].password == pass) {
+            if(this.users[i].email == email && this.users[i].password == pass) {
                 localStorage.setItem('userId', i);
                 return true;
             }
         }
         return false;
+    }
+
+    getUserTasks() {
+        return this.users[localStorage.getItem('userId')].tasks;
+    }
+
+    setUserTasks(array) {
+        this.users[localStorage.getItem('userId')].tasks = array;
+    }
+
+    verificateTaskTitle(name) {
+        for(let i = 0 ; i < this.user.tasks.length ; i++) {
+            if(this.user.tasks !== []) {
+                if(this.user.tasks[i].title == name) {
+                    return false;
+                }
+            } 
+        }
+        return true;
     }
 }

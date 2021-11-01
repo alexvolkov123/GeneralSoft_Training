@@ -15,12 +15,10 @@ function onAuthorization() {
     let password = document.querySelector("#password").value;
 
     if (validateEmail(email) && validatePassword(password)) {
-        if(database.includes(email) && database.verification(password)) {
+        if(database.verification(email, password)) {
             helper.redirect('Dashboard.html');
-            database.changeName("name");
-            
         }
     } else {
-        alert(errors(email, password));
+        alert(errors(email, password, null));
     }
 }

@@ -35,6 +35,7 @@ a{
     right: 200px;
     top: 35%;
     color: #000;
+    cursor: pointer;
 }
 
 .dashboard{
@@ -80,12 +81,56 @@ input[type="text"] {
     width: 40%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+.dashboard__task {
+    width: 80%;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #666;
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.dashboard__task:hover .dashboard__icon {
+    opacity: 100;
+}
+
+.dashboard__icons {
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dashboard__icon{
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    opacity: 0;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.pencil{
+    width: 35px;
+    height: 35px;
+}
+
+.dashboard__icon img {
+    width: 100%;
+    height: 100%;
+}
+
 .dashboard__theme{
     width: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
 }
 .dashboard__theme-text{
     color: #666;
@@ -129,14 +174,10 @@ input[type="text"] {
 .select-css option {
     font-weight:normal; 
 } 
-*[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css { 
-    background-position: left .7em top 50%, 0 0; 
-    padding: .6em .8em .5em 1.4em; 
-}
 .dashboard__add {
-    position: absolute;
+    position: fixed;
     right: 300px;
-    bottom: 200px;
+    bottom: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,9 +188,144 @@ input[type="text"] {
     border-radius: 50%;
     border: 0;
     background-color: #ee5678;
+    cursor: pointer;
 }
 
 .dashboard__add img{
     width: 100%;
     height: 100%;
+}
+
+.modal {
+    display: none;
+}
+.modal__wrap{
+    width: 350px;
+    height: 450px;
+    border-radius: 15px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    flex-direction: column;
+    position: absolute;
+    left: 38%;
+    top: 20%;
+}
+
+.modal__text {
+    width: 100%;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px ;
+}
+
+.modal__title{
+    width: 310px;
+    height: 40px;
+    border: 1px solid #666;  
+    border-radius: 6px; 
+    -webkit-border-radius: 6px;   
+    -moz-border-radius: 6px;    
+    -khtml-border-radius: 6px;  
+    background: #ffffff !important; 
+    outline: none;   
+    color: #000;  
+    font-size: 20px;  
+    font-family: Lato, sans-serif; 
+    font-weight: 400;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.modal__description {
+    width: 310px;
+    height: 140px;
+    padding: 10px;
+    resize: none;
+    border: 1px solid #666;  
+    border-radius: 6px; 
+    -webkit-border-radius: 6px;   
+    -moz-border-radius: 6px;    
+    -khtml-border-radius: 6px;  
+    background: #ffffff ; 
+    outline: none;   
+    color: #000;  
+    font-size: 20px;  
+    font-family: Lato, sans-serif; 
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+.modal__button{
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #004ee0;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type=checkbox] {
+    opacity: 0;
+    position: absolute; 
+}
+
+input[type=checkbox], label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer; 
+}
+
+input[type=checkbox] + label:before {
+    content: '';
+    background: #666;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    padding: 2px;
+    margin-right: 10px;
+    text-align: center; 
+}
+
+input[type=checkbox]:checked + label:before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 8px;
+    border: solid red;
+    border-width: 0 5px 5px 0;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    border-radius: 0;
+    margin: 0 15px 5px 5px; 
+}
+
+input[type=checkbox]:checked + label {
+    text-decoration: line-through;
+}
+
+li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Lato';
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
 }

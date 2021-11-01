@@ -1,44 +1,71 @@
-const addMessage = document.querySelector('.message');
-const addButton = document.querySelector('.add');
-const todo = document.querySelector('.todo');
+const saveButton = document.querySelector('#save');
+const modal = document.querySelector('.modal');
+
+const addButton = document.querySelector('.dashboard__add');
+const todo = document.querySelector('.dashboard__todoList');
+const logOut = document.querySelector('.header__button');
 
 let todoList = [];
 
-if(localStorage.getItem('todo')){
-    todoList = JSON.parse(localStorage.getItem('todo'));
+const greeting = document.querySelector('.dashboard__greeting');
+greeting.innerHTML = `Welcome, ${database.users[database.getUserId()].userName}, here are your tasks`;
+
+if(database.getUserTasks() !== null) {
+    todoList = database.getUserTasks();
     displayMessages();
+} else {
+    todoList = [];
 }
 
-const greeting = document.querySelector('.dashboard__greeting');
-greeting.innerHTML = `Welcome, ${database.users[id].userName}, here are your tasks`;
-
 addButton.addEventListener('click', function(){
-
-    let newTask = {
-        title: addMessage.value,
-        checked: false,
-        important: false,
-    };
-
-    todoList.push(newTask);
-    displayMessages();
-    localStorage.setItem(`${user.email}`, JSON.stringify(todoList));
+    modal.style.display = "block";
 });
 
-function displayMessages(){
+saveButton.addEventListener('click', addNewTask);
+
+function addNewTask() {
+
+    const title = document.querySelector('#title').value;
+    const description = document.querySelector('#description').value;
+
+    if(database.verificateTaskTitle(title)) {
+        let newTask = {
+            title: title,
+            description: description,
+            checked: false,
+        };
+
+        todoList.push(newTask);
+        database.setUserTasks(todoList);
+        localStorage.setItem('users', JSON.stringify(database.users));
+        displayMessages();
+        modal.style.display = 'none';
+    } else {
+        console.log('Error, task is exist');
+        modal.style.display = 'none';
+    }
+}
+
+function displayMessages() {
     let displayMessage = '';
     todoList.forEach(function(item, i) {
         displayMessage += `
-        <li>
+        <li class="dashboard__task">
             <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
             <label for='item_${i}'>${item.title}</label>
-            <p class=""></p>
+            <div class="dashboard__icons">
+                <div class="dashboard__icon pencil" id="edit_${i}" ><img src="./img/pencil.png"></img></div>
+                <div class="dashboard__icon" id="backet_${i}" ><img src="./img/backet.png"></img></div>
+            </div>
         </li>
         `;
         todo.innerHTML = displayMessage;
     });
 }
 
+logOut.addEventListener('click', function() {
+    helper.redirect('sign-in.html');
+})
 
 
 //если в нашем списке задач что-то изменяется, то мы узнаем что изменилось
@@ -49,7 +76,8 @@ todo.addEventListener('change', function(event) {
     todoList.forEach(function(item) {
         if(item.title === valueLabel) {
             item.checked = !item.checked;
-            localStorage.setItem('todo', JSON.stringify(todoList));
+            database.setUserTasks(todoList);
+            localStorage.setItem('users', JSON.stringify(database.users));
         }
     });
 });

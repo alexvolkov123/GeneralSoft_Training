@@ -10,6 +10,6 @@ let helper = (function() {
             } else {
                 onRegistation();
             }
-        }
+        },
     }
 })();
