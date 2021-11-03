@@ -237,6 +237,7 @@ input[type="text"] {
     font-weight: 400;
     margin-bottom: 20px;
     padding-left: 10px;
+    resize: none;
 }
 
 .modal__description {
