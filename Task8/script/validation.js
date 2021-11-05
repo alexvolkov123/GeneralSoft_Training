@@ -25,6 +25,27 @@ function errors(email, password, login) {
             }
         }
     }
+
+    if(password == '' || email == '') {
+        return 'field is empty';
+    } else { 
+        if(validateEmail(email) == false) {
+            return 'Incorrect email address';
+        } else { 
+            if(lowerCaseLatters.test(password) == false) {
+                return 'There is no lower case in the password';
+            } else {
+                if(upperCaseLatters.test(password) == false) {
+                    return 'There is no upper case in the password';
+                } else { 
+                    if(numbers.test(password) == false) {
+                        return 'There is a digit missing in the password';
+                    }
+                }
+            }
+        }
+    }
+    
     return null;
 }
 

@@ -30,7 +30,7 @@ class Database {
                 email: email,
                 password: pass,
                 tasks: [],
-                theme: 'Dark',
+                theme: '#444',
             };
             this.users.push(newUser);
             localStorage.setItem('users', JSON.stringify(this.users));
@@ -63,11 +63,12 @@ class Database {
     }
 
     getUserTasks() {
-        return this.users[localStorage.getItem('userId')].tasks;
+        return this.user.tasks;
     }
 
     setUserTasks(array) {
-        this.users[localStorage.getItem('userId')].tasks = array;
+        this.user.tasks = array;
+
     }
 
     verificateTaskTitle(name) {

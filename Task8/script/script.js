@@ -1,6 +1,6 @@
 const modalButton = document.querySelector('.modal__button');
 const modal = document.querySelector('.modal');
-let elementChangeId = '';
+let elementChangeId = -1;
 
 const addButton = document.querySelector('.dashboard__add');
 const task = document.querySelectorAll('.dashboard__task');
@@ -19,6 +19,8 @@ if(database.getUserTasks() !== null) {
     todoList = [];
 }
 
+tasks.changeColorTheme(database.user.theme);
+
 addButton.addEventListener('click', dialog.showModalAdd);
 
 modalButton.addEventListener('click', function() {
@@ -30,30 +32,35 @@ modalButton.addEventListener('click', function() {
     }
 
     if(id == 'edit') {
-        tasks.editTask(elementChangeId);
+        tasks.editTask();
     }
 
     if(id == 'out') {
-        dialog.hideModal();
+        tasks.outTask();
     }
 });
 
 
 function displayMessages() {
     let displayMessage = '';
-    todoList.forEach(function(item, i) {
-        displayMessage += `
-        <li class="dashboard__task" id="${i}">
-            <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
-            <label for='item_${i}'>${item.title}</label>
-            <div class="dashboard__icons">
-                <div class="dashboard__icon pencil" id="edit_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalEdit(elementChangeId)"><img src="./img/pencil.png"></img></div>
-                <div class="dashboard__icon" id="backet_${i}" onclick="dialog.showModalDelete(this.getAttribute('id'))"><img src="./img/backet.png"></img></div>
-            </div>
-        </li>
-        `;
-        todo.innerHTML = displayMessage;
-    });
+
+    if(todoList.length >= 1) {
+        todoList.forEach(function(item, i) {
+            displayMessage += `
+            <li class="dashboard__task" id="${i}" oncontextmenu="elementChangeId = this.getAttribute('id'); dialog.showModalDescription()">
+                <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
+                <label for='item_${i}'>${item.title}</label>
+                <div class="dashboard__icons">
+                    <div class="dashboard__icon pencil" id="edit_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalEdit()"><img src="./img/pencil.png"></img></div>
+                    <div class="dashboard__icon" id="backet_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDelete()"><img src="./img/backet.png"></img></div>
+                </div>
+            </li>
+            `;
+            todo.innerHTML = displayMessage;
+        });
+    } else {
+        todo.innerHTML = '';
+    }
 }
 
 logOut.addEventListener('click', function() {

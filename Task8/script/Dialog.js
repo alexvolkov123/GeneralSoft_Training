@@ -4,23 +4,30 @@ class Dialog {
     }
 
     showModalDescription() {
-
+        tasks.showTask();
+        this.showModalAdd();
     }
 
-    showModalEdit(id) {
-        tasks.loadTask(id);
+    showModalEdit() {
+        tasks.loadTask();
         this.showModalAdd();
     }
 
     showModalDelete() {
-
+        let modalDelete = document.querySelector('.delete');
+        modalDelete.style.display = 'block';
     }
 
     showModalAdd() {    
-        modal.style.display = "block";
+        modal.style.display = 'block';
     }
 
     hideModal() {
-        modal.style.display = "none";
+        modal.style.display = 'none';
+    }
+
+    hideModalDelete() {
+        let modalDelete = document.querySelector('.delete');
+        modalDelete.style.display = 'none';
     }
 }
