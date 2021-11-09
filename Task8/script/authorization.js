@@ -6,7 +6,7 @@ function onRegistation() {
     if (validateUserName(name) && validateEmail(email) && validatePassword(password)) {
         database.addUser(name, email, password);
     } else {
-        alert(errors(email, password, name));
+        dialog.showError(email, password, name);
     }
 }
 
@@ -19,6 +19,6 @@ function onAuthorization() {
             helper.redirect('Dashboard.html');
         }
     } else {
-        alert(errors(email, password, null));
+        dialog.showError(email, password, null);
     }
 }

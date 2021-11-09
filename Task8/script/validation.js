@@ -46,7 +46,7 @@ function errors(email, password, login) {
         }
     }
     
-    return null;
+    return;
 }
 
 function validateEmail(email) {

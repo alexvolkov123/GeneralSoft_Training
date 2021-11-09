@@ -18,7 +18,7 @@ class Dialog {
         modalDelete.style.display = 'block';
     }
 
-    showModalAdd() {    
+    showModalAdd() {
         modal.style.display = 'block';
     }
 
@@ -29,5 +29,17 @@ class Dialog {
     hideModalDelete() {
         let modalDelete = document.querySelector('.delete');
         modalDelete.style.display = 'none';
+    }
+
+    showError(email, password, name) {
+        let error = document.querySelector('.error');
+
+        error.innerHTML = `${errors(email, password, name)}`;
+        error.style.display = 'block';
+
+        setTimeout(()=>{
+            let error = document.querySelector('.error');
+            error.style.display = 'none';
+        }, 2000); 
     }
 }
