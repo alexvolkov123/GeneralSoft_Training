@@ -7,11 +7,10 @@ class Database {
 
     getUsers() {
         if(localStorage.getItem('users') !== null) {
-            this.users = JSON.parse(localStorage.getItem('users'));
+            return JSON.parse(localStorage.getItem('users'));
         } else {
             return [];
         }
-        return this.users;
     }
 
     getUserId() {

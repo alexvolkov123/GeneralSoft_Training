@@ -1,7 +1,4 @@
 class Tasks {
-    constructor() {
-        this.tasks = database.user.tasks;
-    }
 
     addNewTask() {
         const title = document.querySelector('#title').value;
