@@ -46,7 +46,7 @@ function errors(email, password, login) {
         }
     }
     
-    return;
+    return 'Make sure you use English when typing and do not use special characters';
 }
 
 function validateEmail(email) {

@@ -53,7 +53,7 @@ class Database {
 
     verification(email, pass) {
         for(let i = 0 ; i < this.users.length ; i++) {
-            if(this.users[i].email == email && this.users[i].password == pass) {
+            if(this.users[i].email == email && this.users[i].password == pass && this.users !== []) {
                 localStorage.setItem('userId', i);
                 return true;
             }

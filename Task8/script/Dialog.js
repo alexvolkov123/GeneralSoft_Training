@@ -38,6 +38,17 @@ class Dialog {
         error.style.display = 'block';
 
         setTimeout(()=>{
+            error.style.display = 'none';
+        }, 2000); 
+    }
+
+    showErrorVerificate() {
+        let error = document.querySelector('.error');
+
+        error.innerHTML = `This user is not found`;
+        error.style.display = 'block';
+
+        setTimeout(()=>{
             let error = document.querySelector('.error');
             error.style.display = 'none';
         }, 2000); 

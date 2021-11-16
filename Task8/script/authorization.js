@@ -17,8 +17,10 @@ function onAuthorization() {
     if (validateEmail(email) && validatePassword(password)) {
         if(database.verification(email, password)) {
             helper.redirect('Dashboard.html');
+        } else {
+            dialog.showError(email, password, name);
         }
     } else {
-        dialog.showError(email, password, null);
+        dialog.showErrorVerificate();
     }
 }
