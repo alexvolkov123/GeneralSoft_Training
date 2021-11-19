@@ -4,7 +4,8 @@ let helper = (function() {
         redirect: (address) => {
             document.location.href = address;
         },
-        distribution: () => {
+        distribution: (event) => {
+            event.preventDefault();
             if(document.querySelector('#username') == null) {
                 onAuthorization();
             } else {
