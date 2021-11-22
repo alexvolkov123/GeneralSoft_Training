@@ -25,10 +25,10 @@
 
                 <input type="text" id="sorting" oninput="tasks.sortTasks(this);" placeholder="Search by title..." class="dashboard__filterTitle">
 
-                <select name="status" id="status" class="select-css">
-                    <option onclick="todoList = database.getUserTasks(); displayMessages()">All</option>
-                    <option onclick="todoList = database.getUserTasks(); tasks.sortForDones()">Dones</option> 
-                    <option onclick="todoList = database.getUserTasks(); tasks.sortForProgress()">In progress</option>
+                <select name="status" id="status" onchange="helper.selectStatus(this.value)" class="select-css">
+                    <option>All</option>
+                    <option>Dones</option> 
+                    <option>In progress</option>
                 </select> 
             </div>
 
@@ -39,11 +39,11 @@
             <div class="dashboard__theme">
                 <h3 class="dashboard__theme-text">Application theme</h3>
 
-                <select name="theme" id="theme" class="select-css">
-                    <option onclick="tasks.changeColorTheme('#f564fe')">Pink</option>
-                    <option onclick="tasks.changeColorTheme('#555')">Dark</option>  
-                    <option onclick="tasks.changeColorTheme('#6564fe')">Violet</option>
-                    <option onclick="tasks.changeColorTheme('#afa4fe')">Chrome</option>
+                <select name="theme" id="theme" class="select-css" onchange="helper.selectColor(this.value);">
+                    <option>Pink</option>
+                    <option>Dark</option>  
+                    <option>Violet</option>
+                    <option>Chrome</option>
                 </select> 
             </div>
 
