@@ -21,7 +21,7 @@ header{
     display: flex;
     justify-content: center;
 }
-nav{
+.nav{
     width: 100%;
     height: 65px;
     display: flex;
@@ -54,13 +54,14 @@ nav{
     font-weight: 400;
     font-size: 14px;
     transition: 0.3s;
-}
-.link--color {
     color: #868686;
-}
-.nav__link--size {
     height: 35px;
     padding: 0px 20px;
+}
+.nav__link_active {
+    color: #fff;
+    background-color: #ffbb42;
+    border-radius: 2px;
 }
 .nav__link:hover {
     color: #fff;
@@ -68,129 +69,87 @@ nav{
     border-radius: 2px;
 }
 /* ---------------Секция Сервисы--------------------------------------- */
-.services {
+.section {
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.services__inner{
-    display: flex;
-    flex-direction: column;
+.section_indent {
+    padding: 40px 0;
 }
-.services__header {
+.section__header {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
-.services__title {
+.section__title {
     font-family: 'Open Sans', sans-serif;
     font-weight: 900;
     font-size: 32px;
     text-transform: uppercase;
+    color: #394b50;
 }
-.services__subtitle {
+.section__title_white {
+    color: #fff;
+}
+.section__subtitle {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 16px;
     
 }
-.title--black{
-    color: #394b50;
-}
-.title--indent{
+
+.section__title_indent{
     margin: 80px auto;
     text-align: center;
 }
-.services__body {
+.section__body {
     width: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.services__item {
-    max-width: 530px;
+.section__item {
+    max-width: 570px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
-.services__item-img {
+.section__item-img {
     min-width: 75px;
     height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
 }
-.services__item-text {
+.section__item-text {
     display: flex;
     flex-direction: column;
 }
-.services__item-title {
+.section__item-title {
     text-transform: uppercase;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     font-size: 16px;
 }
-.item-title--indent {
+.section__item-title_indent {
     margin-bottom: 20px;
 }
-.services__item-subtitle {
+.section__item-subtitle {
     color: #7b7b7b;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 13px;
     line-height: 24px;
 }
-.services__item--indent{
+.section__item_indent{
     margin-bottom: 80px;
 }
 /* ----------------Секция Клиенты--------------------------------- */
-.clients {
-    width: 100%;
+.section_clients {
     background-color: #ffc155;
-    display: flex;
-    justify-content: center;
 }
-.clients__inner {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    
-}
-.clients__inner--indent{
-    padding: 80px 0px;
-}
-.clients__header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-.clients__title {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 900;
-    font-size: 32px;
-    text-transform: uppercase;
-}
-.title--white {
-    color: #fff;
-}
-.clients__subtitle {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    text-align: center;
-}
-.clients__body {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.clients__item {
-    max-width: 570px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.section__item_clients {
     background-color: #fff;
 }
 .clients__item--indent {
@@ -208,10 +167,6 @@ nav{
     width: 120px;
     height: 120px;
     border-radius: 50%;
-}
-.clients_item-text {
-    display: flex;
-    flex-direction: column;
 }
 .clients_item-description {
     font-family: 'Myriad Pro', sans-serif;
