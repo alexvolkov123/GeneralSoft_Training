@@ -1,0 +1,33 @@
+/*----------------------------Общие натройки----------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fjalla One', sans-serif;
+}
+input{
+    border: 0;
+}
+a{
+	text-decoration-color: #e84c3d;
+}
+li{
+	list-style: none;
+}
+.red{
+    color: #e84c3d;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+.grey_link{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #767c7e;
+    text-decoration-color: #767c7e;
+}
+.grid{
+    width: 1170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
