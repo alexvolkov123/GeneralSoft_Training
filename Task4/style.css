@@ -11,13 +11,68 @@ body{
     justify-content: center;
     align-items: center;
 }
+.hour{
+    color: #fcb900;
+    font-size: 90px;
+    text-shadow: #ebfc00 -3px 0px 7px, #ebfc00 0px 0px 15px;
+    position: absolute;
+}
+.hour12{
+    top: 0;
+    left: 45%;
+}
+.hour11{
+    top: 7%;
+    left: 21%;
+}
+.hour10{
+    top: 22%;
+    left: 9%;
+}
+.hour9{
+    top: 43%;
+    left: 3%;
+}
+.hour8{
+    bottom: 24%;
+    left: 7%;
+}
+.hour7{
+    bottom: 7%;
+    left: 21%;
+}
+.hour6{
+    top: 86%;
+    left: 45%;
+}
+.hour5{
+    bottom: 7%;
+    left: 67%;
+}
+.hour4{
+    bottom: 24%;
+    left: 82%;
+}
+.hour3{
+    top: 43%;
+    left: 86%;
+}
+.hour2{
+    top: 22%;
+    left: 84%;
+}
+.hour1{
+    top: 7%;
+    left: 73%;
+}
+
 .clock{
+    position: relative;
     width: 800px;
     height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(img/clock.jpg);
     background-size: cover;
     border: 6px double #f1d700;
     border-radius: 50%;
