@@ -10,7 +10,7 @@ const logOut = document.querySelector('.header__button');
 let todoList = [];
 
 const greeting = document.querySelector('.dashboard__greeting');
-greeting.innerHTML = `Welcome, ${database.users[database.getUserId()].userName}, here are your tasks`;
+greeting.innerHTML = `Welcome, ${database.users[database.getUserId()].userName}, here are your tasks <br> if you don't see your tasks, just add them`;
 
 if(database.getUserTasks() !== null) {
     todoList = database.getUserTasks();

@@ -7,10 +7,36 @@ console.log(myLibrary.isFunction(()=>{}));
 console.log(myLibrary.isUndefined(undefined));
 console.log(myLibrary.isNull(null));
 console.log(myLibrary.isNaN(NaN));
-console.log(myLibrary.deepEqual(Object, Object));
 
-var Sam = new myLibrary.Developer('Sam', 'Winchester', 'Front-end');
-var Din = new myLibrary.Developer('Din', 'Winchester', 'Back-end');
+var obj = {
+  a: 1, 
+  b: 2, 
+  c: {
+    c1: 1, 
+    c2: 2,
+    c3: {
+      c4: 4,
+    },
+  }
+}
+
+var obj2 = {
+  a: 1, 
+  b: 2, 
+  c: {
+    c1: 1, 
+    c2: 2,
+    c3: {
+      c4: 4,
+    },
+  }
+}
+
+
+console.log(myLibrary.deepEqual(obj, obj2));
+
+var Sam = new myLibrary.Singleton('Sam', 'Winchester', 'Front-end');
+var Din = new myLibrary.Singleton('Din', 'Winchester', 'Back-end');
 
 console.log(Sam === Din);
 console.log(Sam);
@@ -18,6 +44,7 @@ console.log(Din);
 
 console.log(myLibrary.sum(2,3));
 console.log(myLibrary.sum(2,3));
+console.log(myLibrary.sum(3,2));
 console.log(myLibrary.sum(2,3));
 console.log(myLibrary.sum(2,5));
 console.log(myLibrary.sum(2,5));
