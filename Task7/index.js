@@ -28,13 +28,7 @@ class Circle {
 }
 
 function totalSquare(array) {
-
-    let result = 0;
-    for(let i = 0; i < array.length; i++) {
-        result += array[i].square();
-    }
-    return result;
-
+    return array.reduce((sum, item) => sum + item.square(), 0);
 }
 
 const square = new Square(5);
