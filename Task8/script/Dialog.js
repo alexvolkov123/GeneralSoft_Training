@@ -4,22 +4,25 @@ class Dialog {
     }
 
     showModalDescription() {
+        modal.style.display = 'block';
         tasks.showTask();
-        this.showModalAdd();
     }
 
-    showModalEdit() {
+    showModalEdit(event) {
+        event.stopPropagation();
+        modal.style.display = 'block';
         tasks.loadTask();
-        this.showModalAdd();
     }
 
-    showModalDelete() {
+    showModalDelete(event) {
+        event.stopPropagation();
         let modalDelete = document.querySelector('.delete');
         modalDelete.style.display = 'block';
     }
 
     showModalAdd() {
         modal.style.display = 'block';
+        tasks.addTask();
     }
 
     hideModal() {
@@ -49,7 +52,6 @@ class Dialog {
         error.style.display = 'block';
 
         setTimeout(()=>{
-            let error = document.querySelector('.error');
             error.style.display = 'none';
         }, 2000); 
     }

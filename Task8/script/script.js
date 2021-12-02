@@ -6,6 +6,7 @@ const addButton = document.querySelector('.dashboard__add');
 const task = document.querySelectorAll('.dashboard__task');
 const todo = document.querySelector('.dashboard__todoList');
 const logOut = document.querySelector('.header__button');
+const cancel = document.querySelector('.modal__cancel');
 
 let todoList = [];
 
@@ -26,9 +27,8 @@ addButton.addEventListener('click', dialog.showModalAdd);
 modalButton.addEventListener('click', function() {
 
     let id = modalButton.getAttribute('id');
-
     if(id == 'save') {
-        tasks.addNewTask();
+        tasks.saveTask();
     }
 
     if(id == 'edit') {
@@ -43,16 +43,15 @@ modalButton.addEventListener('click', function() {
 
 function displayMessages() {
     let displayMessage = '';
-
     if(todoList.length >= 1) {
         todoList.forEach(function(item, i) {
             displayMessage += `
-            <li class="dashboard__task" id="${i}" oncontextmenu="elementChangeId = this.getAttribute('id'); dialog.showModalDescription()">
+            <li class="dashboard__task" id="${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDescription()">
                 <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
-                <label for='item_${i}'>${item.title}</label>
+                <label class= 'dashboard__label'>${item.title}</label>
                 <div class="dashboard__icons">
-                    <div class="dashboard__icon pencil" id="edit_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalEdit()"><img src="./img/pencil.png"></img></div>
-                    <div class="dashboard__icon" id="backet_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDelete()"><img src="./img/backet.png"></img></div>
+                    <div class="dashboard__icon pencil" id="edit_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalEdit(event)"><img src="./img/pencil.png"></img></div>
+                    <div class="dashboard__icon" id="backet_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDelete(event)"><img src="./img/backet.png"></img></div>
                 </div>
             </li>
             `;
@@ -66,6 +65,8 @@ function displayMessages() {
 logOut.addEventListener('click', function() {
     helper.redirect('sign-in.html');
 })
+
+cancel.addEventListener('click', () => {tasks.clearTask(); dialog.hideModal();})
 
 
 //если в нашем списке задач что-то изменяется, то мы узнаем что изменилось

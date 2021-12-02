@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="image/x-icon" href="./img/favicon.ico" rel="shortcut icon">
+    <link type="Image/x-icon" href="./img/favicon.ico" rel="icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -40,7 +42,7 @@
                 <h3 class="dashboard__theme-text">Application theme</h3>
 
                 <select name="theme" id="theme" class="select-css" onchange="helper.selectColor(this.value);">
-                    <option>Dark</option>  
+                    <option>Dark</option>
                     <option>Pink</option>
                     <option>Violet</option>
                     <option>Chrome</option>
@@ -52,8 +54,9 @@
 
         <div class="modal">
             <div class="modal__wrap">
+                <div class="modal__cancel"></div>
                 <h2 class="modal__text">Add new Task</h2>
-                <textarea required id="title" class="modal__title" placeholder="title..."></textarea>
+                <textarea required id="title" class="modal__title" placeholder="title..." maxlength="20"></textarea>
                 <textarea required id="description" class="modal__description" placeholder="description..."></textarea>
                 <div id="save" class="modal__button">Save</div>
             </div>

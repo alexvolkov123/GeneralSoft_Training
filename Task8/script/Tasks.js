@@ -1,6 +1,19 @@
 class Tasks {
 
-    addNewTask() {
+    addTask() {
+        const text = document.querySelector('.modal__text');
+        const button = document.querySelector('.modal__button');
+        const title = document.querySelector('#title');
+        const description = document.querySelector('#description');
+
+        title.value = "";
+        description.value = "";
+        button.setAttribute('id', 'save');
+        button.innerHTML = 'Save';
+        text.innerHTML = 'Add this task';
+    }
+
+    saveTask() {
         const title = document.querySelector('#title').value;
         const description = document.querySelector('#description').value;
     
@@ -20,6 +33,8 @@ class Tasks {
             console.log('Error, task is exist');
             dialog.hideModal();
         }
+        
+        this.clearTask();
     }
 
     loadTask() {
@@ -29,10 +44,10 @@ class Tasks {
         const button = document.querySelector('.modal__button');
 
         let elem = document.getElementById(elementChangeId);
-        let parentElem = elem.parentElement.parentElement;
+        let parentId= elem.parentElement.parentElement.getAttribute('id');
         
-        title.innerHTML = database.user.tasks[parentElem.getAttribute('id')].title;
-        description.innerHTML   = database.user.tasks[parentElem.getAttribute('id')].description;
+        title.value = database.user.tasks[parentId].title;
+        description.value = database.user.tasks[parentId].description;
 
         button.setAttribute('id', 'edit');
         button.innerHTML = 'Edit';
@@ -40,17 +55,11 @@ class Tasks {
     }
 
     editTask() {
-        const text = document.querySelector('.modal__text');
         const title = document.querySelector('#title').value;
         const description = document.querySelector('#description').value;
-        const button = document.querySelector('.modal__button');
 
         let elem = document.getElementById(elementChangeId);
         let parentId = elem.parentElement.parentElement.getAttribute('id');
-
-        text.innerHTML = 'Add new task';
-        button.setAttribute('id', 'save');
-        button.innerHTML = 'Save';
 
         if(database.verificateTaskTitle(title)) {
             
@@ -98,8 +107,8 @@ class Tasks {
         const description = document.querySelector('#description');
         const button = document.querySelector('.modal__button'); 
 
-        title.innerHTML = database.user.tasks[elementChangeId].title;
-        description.innerHTML = database.user.tasks[elementChangeId].description;
+        title.value = database.user.tasks[elementChangeId].title;
+        description.value = database.user.tasks[elementChangeId].description;
 
         title.setAttribute('readonly', 'readonly');
         description.setAttribute('readonly', 'readonly');
@@ -110,21 +119,21 @@ class Tasks {
     }
 
     outTask() {
-        const text = document.querySelector('.modal__text');
+        this.clearTask();
+        dialog.hideModal();
+    }
+
+    clearTask() {
         const title = document.querySelector('#title');
         const description = document.querySelector('#description');
-        const button = document.querySelector('.modal__button'); 
-        dialog.hideModal();
-
-        title.innerHTML = "";
-        description.innerHTML = "";
-
+        const text = document.querySelector('.modal__text');
+        const button = document.querySelector('.modal__button');
+        text.innerHTML = "";
+        button.innerHTML = "";
+        title.value = "";
+        description.value = "";
         title.removeAttribute('readonly');
         description.removeAttribute('readonly');
-
-        button.setAttribute('id', 'save');
-        button.innerHTML = 'Save';
-        text.innerHTML = 'Add new task';
     }
 
     sortTasks(sorting) {
