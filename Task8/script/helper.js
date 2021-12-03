@@ -19,12 +19,17 @@ let helper = (function() {
                     displayMessages();
                     break;
                 case "Dones":   
-                    todoList = database.getUserTasks(); 
-                    tasks.sortForDones();
+                    const searchSymbols = document.querySelector('#searching');
+                    if (searchSymbols.value != "") {
+                        todoList = database.getUserTasks(); 
+                        tasks.searchForDones();
+                    } else {
+                        tasks.searchForDones();
+                    }
                     break;
                 case "In progress":   
                     todoList = database.getUserTasks(); 
-                    tasks.sortForProgress();
+                    tasks.searchForProgress();
                     break;
             }
         },

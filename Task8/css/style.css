@@ -70,7 +70,7 @@ input[type="text"] {
     -webkit-border-radius: 6px;   
     -moz-border-radius: 6px;    
     -khtml-border-radius: 6px;  
-    background: #ffffff !important; 
+    background: #ffffff ; 
     outline: none;   
     height: 35px;  
     width: 250px; 
@@ -106,8 +106,8 @@ input[type="text"] {
 }
 .dashboard__label {
     display: block; 
-    width: 90%; 
-    overflow: hidden;
+    width: 50%; 
+    cursor: pointer;
 }
 
 .dashboard__icons {
@@ -268,7 +268,7 @@ input[type="text"] {
     -webkit-border-radius: 6px;   
     -moz-border-radius: 6px;    
     -khtml-border-radius: 6px;  
-    background: #ffffff !important; 
+    background: #ffffff; 
     outline: none;   
     color: #000;  
     font-size: 20px;  

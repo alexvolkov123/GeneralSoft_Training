@@ -23,7 +23,6 @@ if(database.getUserTasks() !== null) {
 tasks.changeColorTheme(database.user.theme);
 
 addButton.addEventListener('click', dialog.showModalAdd);
-
 modalButton.addEventListener('click', function() {
 
     let id = modalButton.getAttribute('id');
@@ -48,7 +47,7 @@ function displayMessages() {
             displayMessage += `
             <li class="dashboard__task" id="${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDescription()">
                 <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
-                <label class= 'dashboard__label'>${item.title}</label>
+                <label for="item_${i}" class= 'dashboard__label'>${item.title}</label>
                 <div class="dashboard__icons">
                     <div class="dashboard__icon pencil" id="edit_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalEdit(event)"><img src="./img/pencil.png"></img></div>
                     <div class="dashboard__icon" id="backet_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDelete(event)"><img src="./img/backet.png"></img></div>

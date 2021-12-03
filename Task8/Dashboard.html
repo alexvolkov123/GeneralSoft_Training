@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>ToDo List</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
         <div class="dashboard__content">
             <div class="dashboard__filters">
 
-                <input type="text" id="sorting" oninput="tasks.sortTasks(this);" placeholder="Search by title..." class="dashboard__filterTitle">
+                <input type="text" class="dashboard__filterTitle" id="searching" oninput="tasks.searchTasks(this);" placeholder="Search by title...">
 
                 <select name="status" id="status" onchange="helper.selectStatus(this.value)" class="select-css">
                     <option>All</option>
@@ -41,7 +41,7 @@
             <div class="dashboard__theme">
                 <h3 class="dashboard__theme-text">Application theme</h3>
 
-                <select name="theme" id="theme" class="select-css" onchange="helper.selectColor(this.value);">
+                <select id="theme" class="select-css" onchange="helper.selectColor(this.value)">
                     <option>Dark</option>
                     <option>Pink</option>
                     <option>Violet</option>

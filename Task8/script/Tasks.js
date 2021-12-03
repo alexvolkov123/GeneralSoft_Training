@@ -18,17 +18,22 @@ class Tasks {
         const description = document.querySelector('#description').value;
     
         if(database.verificateTaskTitle(title)) {
-            let newTask = {
-                title: title,
-                description: description,
-                checked: false,
-            };
-    
-            todoList.push(newTask);
-            database.setUserTasks(todoList);
-            localStorage.setItem('users', JSON.stringify(database.users));
-            displayMessages();
-            dialog.hideModal();
+            if(title != '' && description != '') {
+                let newTask = {
+                    title: title,
+                    description: description,
+                    checked: false,
+                };
+        
+                todoList.push(newTask);
+                database.setUserTasks(todoList);
+                localStorage.setItem('users', JSON.stringify(database.users));
+                displayMessages();
+                dialog.hideModal();
+            } else {
+                console.log('You cannot create a task with an empty field');
+                dialog.hideModal();
+            }
         } else {
             console.log('Error, task is exist');
             dialog.hideModal();
@@ -136,13 +141,14 @@ class Tasks {
         description.removeAttribute('readonly');
     }
 
-    sortTasks(sorting) {
+    searchTasks(sorting) {
 
         if(sorting.value !== "") {
             let newTodoList = [];
             todoList.forEach(function(item) {
                 if(item.title.includes(sorting.value)) {
                     newTodoList.push(item);
+
                 }
             });
             todoList = newTodoList;
@@ -153,8 +159,7 @@ class Tasks {
         }
     }
 
-    sortForDones() {
-        let newTodoList = [];
+    searchForDones() {
         todoList.forEach(function(item) {
             if(item.checked == true) {
                 newTodoList.push(item);
@@ -164,10 +169,21 @@ class Tasks {
         displayMessages();
     }
 
-    sortForProgress() {
+    searchForProgress() {
         let newTodoList = [];
         todoList.forEach(function(item) {
             if(item.checked == false) {
+                newTodoList.push(item);
+            }
+        });
+        todoList = newTodoList;
+        displayMessages();
+    }
+
+    searchForTextAndDones() {
+        let newTodoList = [];
+        todoList.forEach(function(item) {
+            if(item.checked == true) {
                 newTodoList.push(item);
             }
         });
