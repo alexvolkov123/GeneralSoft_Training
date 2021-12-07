@@ -1,13 +1,6 @@
 :root {
     --theme: #444;
 }    
-    
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
-}
 a{
     text-decoration: none;
 }
@@ -208,7 +201,9 @@ input[type="text"] {
 
 .modal {
     display: none;
-    position: relative;
+    position: fixed;
+    left: 38%;
+    top: 250px;
 }
 .modal__cancel {
     position: absolute;

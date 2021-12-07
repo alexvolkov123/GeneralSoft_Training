@@ -7,6 +7,7 @@ const task = document.querySelectorAll('.dashboard__task');
 const todo = document.querySelector('.dashboard__todoList');
 const logOut = document.querySelector('.header__button');
 const cancel = document.querySelector('.modal__cancel');
+const selectStatus = document.querySelector('#status');
 
 let todoList = [];
 
@@ -19,7 +20,7 @@ if(database.getUserTasks() !== null) {
 } else {
     todoList = [];
 }
-
+tasks.showModalError(true, 'Success')
 tasks.changeColorTheme(database.user.theme);
 
 addButton.addEventListener('click', dialog.showModalAdd);
@@ -60,14 +61,11 @@ function displayMessages() {
         todo.innerHTML = '';
     }
 }
-
 logOut.addEventListener('click', function() {
     helper.redirect('sign-in.html');
 })
-
 cancel.addEventListener('click', () => {tasks.clearTask(); dialog.hideModal();})
-
-
+selectStatus.addEventListener('change', tasks.searchTasks);
 //если в нашем списке задач что-то изменяется, то мы узнаем что изменилось
 todo.addEventListener('change', function(event) {
     let idInput = event.target.getAttribute('id');

@@ -30,12 +30,13 @@ class Tasks {
                 localStorage.setItem('users', JSON.stringify(database.users));
                 displayMessages();
                 dialog.hideModal();
+                this.showModalError(true, 'Success');
             } else {
-                console.log('You cannot create a task with an empty field');
+                this.showModalError(false, 'You cannot create a task with an empty field');
                 dialog.hideModal();
             }
         } else {
-            console.log('Error, task is exist');
+            this.showModalError(false, 'Error, task is exist');
             dialog.hideModal();
         }
         
@@ -142,7 +143,7 @@ class Tasks {
     }
 
     searchTasks(sorting) {
-
+        console.log(sorting);
         if(sorting.value !== "") {
             let newTodoList = [];
             todoList.forEach(function(item) {
@@ -155,6 +156,7 @@ class Tasks {
             displayMessages();
         } else {
             todoList = database.getUserTasks();
+
             displayMessages();
         }
     }
@@ -180,20 +182,22 @@ class Tasks {
         displayMessages();
     }
 
-    searchForTextAndDones() {
-        let newTodoList = [];
-        todoList.forEach(function(item) {
-            if(item.checked == true) {
-                newTodoList.push(item);
-            }
-        });
-        todoList = newTodoList;
-        displayMessages();
-    }
-
     changeColorTheme(color) {
         document.documentElement.style.setProperty('--theme', color);
         database.user.theme = color;
         localStorage.setItem('users', JSON.stringify(database.users));
+    }
+    showModalError(result, text) {
+        let error = document.querySelector('.error');
+        error.style.display = 'block';
+        error.innerHTML = text;
+        if(result == true) {
+            error.style.background = "green";
+        } else {
+            error.style.background = 'rgb(233, 75, 27)';
+        }
+        setTimeout(()=>{
+            error.style.display = 'none';
+        }, 2000); 
     }
 }

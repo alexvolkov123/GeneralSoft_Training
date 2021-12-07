@@ -1,8 +1,4 @@
 class Dialog {
-    constructor() {
-
-    }
-
     showModalDescription() {
         modal.style.display = 'block';
         tasks.showTask();
