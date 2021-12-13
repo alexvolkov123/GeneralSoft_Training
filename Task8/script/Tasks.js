@@ -20,7 +20,7 @@ class Tasks {
         if(database.verificateTaskTitle(title)) {
             if(title != '' && description != '') {
                 let newTask = {
-                    title: title,
+                    title: title.toLowerCase(),
                     description: description,
                     checked: false,
                 };
@@ -143,25 +143,25 @@ class Tasks {
     }
 
     searchTasks(sorting) {
-        console.log(sorting);
-        if(sorting.value !== "") {
+        let newSorting = sorting.toLowerCase();
+        if(newSorting !== "") {
             let newTodoList = [];
             todoList.forEach(function(item) {
-                if(item.title.includes(sorting.value)) {
+                if(item.title.includes(newSorting)) {
                     newTodoList.push(item);
-
                 }
             });
             todoList = newTodoList;
             displayMessages();
         } else {
             todoList = database.getUserTasks();
-
+            selectStatus.value = "All";
             displayMessages();
         }
     }
 
     searchForDones() {
+        let newTodoList = [];
         todoList.forEach(function(item) {
             if(item.checked == true) {
                 newTodoList.push(item);
@@ -186,6 +186,19 @@ class Tasks {
         document.documentElement.style.setProperty('--theme', color);
         database.user.theme = color;
         localStorage.setItem('users', JSON.stringify(database.users));
+    }
+
+    setColorTheme(color) {
+        switch(color) {
+            case "#555":   
+                return 'Dark';
+            case "#f564fe":   
+                return 'Pink'
+            case "#6564fe":   
+                return 'Violet';
+            case "#aaf400":   
+                return 'Chrome';
+        }
     }
     showModalError(result, text) {
         let error = document.querySelector('.error');

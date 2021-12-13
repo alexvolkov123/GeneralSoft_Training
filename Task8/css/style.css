@@ -99,7 +99,7 @@ input[type="text"] {
 }
 .dashboard__label {
     display: block; 
-    width: 50%; 
+    max-width: 50%; 
     cursor: pointer;
 }
 
@@ -369,6 +369,9 @@ li {
 
 .delete {
     display: none;
+    position: fixed;
+    left: 38%;
+    top: 350px;
 }
 .delete__wrap{
     width: 350px;

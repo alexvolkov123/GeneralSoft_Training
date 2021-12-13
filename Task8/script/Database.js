@@ -29,7 +29,7 @@ class Database {
                 email: email,
                 password: pass,
                 tasks: [],
-                theme: '#444',
+                theme: '#555',
             };
             this.users.push(newUser);
             localStorage.setItem('users', JSON.stringify(this.users));

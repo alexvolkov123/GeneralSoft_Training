@@ -8,6 +8,8 @@ const todo = document.querySelector('.dashboard__todoList');
 const logOut = document.querySelector('.header__button');
 const cancel = document.querySelector('.modal__cancel');
 const selectStatus = document.querySelector('#status');
+const selectColor = document.querySelector('#theme');
+const searchText = document.querySelector('#searching');
 
 let todoList = [];
 
@@ -20,8 +22,10 @@ if(database.getUserTasks() !== null) {
 } else {
     todoList = [];
 }
-tasks.showModalError(true, 'Success')
-tasks.changeColorTheme(database.user.theme);
+tasks.showModalError(true, 'Success');
+
+tasks.changeColorTheme(database.user.theme)
+selectColor.value = tasks.setColorTheme(database.user.theme);
 
 addButton.addEventListener('click', dialog.showModalAdd);
 modalButton.addEventListener('click', function() {
@@ -65,7 +69,19 @@ logOut.addEventListener('click', function() {
     helper.redirect('sign-in.html');
 })
 cancel.addEventListener('click', () => {tasks.clearTask(); dialog.hideModal();})
-selectStatus.addEventListener('change', tasks.searchTasks);
+
+searchText.addEventListener('input', (event) => tasks.searchTasks(`${event.target.value}`))
+selectStatus.addEventListener('change', (event) => {
+    if(event.target.value == 'All') {
+        todoList = database.getUserTasks();
+        searchText.value = '';
+        displayMessages();
+    };
+    if(event.target.value == 'Dones') tasks.searchForDones();
+    if(event.target.value == 'In progress') tasks.searchForProgress();
+});
+selectColor.addEventListener('change', (event) => helper.selectColor(event.target.value))
+
 //если в нашем списке задач что-то изменяется, то мы узнаем что изменилось
 todo.addEventListener('change', function(event) {
     let idInput = event.target.getAttribute('id');
