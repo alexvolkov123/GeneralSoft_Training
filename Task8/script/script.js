@@ -4,15 +4,16 @@ let elementChangeId = -1;
 let tasks = new Tasks();
 
 const addButton = document.querySelector('.dashboard__add');
-const task = document.querySelectorAll('.dashboard__task');
+
 const todo = document.querySelector('.dashboard__todoList');
 const logOut = document.querySelector('.header__button');
 const cancel = document.querySelector('.modal__cancel');
 const selectStatus = document.querySelector('#status');
-const selectColor = document.querySelector('#theme');
 const searchText = document.querySelector('#searching');
+const selectColor = document.querySelector('#theme');
 
 let todoList = [];
+
 
 const greeting = document.querySelector('.dashboard__greeting');
 greeting.innerHTML = `Welcome, ${database.users[database.getUserId()].userName}, here are your tasks <br> if you don't see your tasks, just add them`;
@@ -60,18 +61,27 @@ selectStatus.addEventListener('change', (event) => {
 });
 selectColor.addEventListener('change', (event) => helper.selectColor(event.target.value))
 
+
+const list = document.querySelectorAll('.dashboard__task');
+todo.addEventListener('click', (event) => {
+    list.forEach((li) => {
+        if(li === event.target) {
+            dialog.showModalDescription();
+        }
+    })
+});
+
 //если в нашем списке задач что-то изменяется, то мы узнаем что изменилось
-todo.addEventListener('change', (event) => {
+list.forEach((li) => li.addEventListener('change', (event) => {
+    event.stopPropagation();
     let idInput = event.target.getAttribute('id');
-    let valueLabel = todo.querySelector('[for=' + idInput + ']').innerHTML;
+    let valueLabel = event.target.parentElement.querySelector('[for=' + idInput + ']').innerHTML;
     
     todoList.forEach(function(item) {
-        if(item.title === valueLabel) {
+        if(item.title == valueLabel) {
             item.checked = !item.checked;
             database.setUserTasks(todoList);
             localStorage.setItem('users', JSON.stringify(database.users));
         }
     });
-});
-
-
+}))

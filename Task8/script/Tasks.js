@@ -192,16 +192,14 @@ class Tasks {
         let displayMessage = '';
         if(todoList.length >= 1) {
             todoList.forEach(function(item, i) {
-                displayMessage += `
-                <li class="dashboard__task" id="${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDescription()">
+                displayMessage += `<li class="dashboard__task" id="${i}" onclick="elementChangeId = this.getAttribute('id');">
                     <input type='checkbox' id='item_${i}' class= 'dashboard__input' ${item.checked ? 'checked' : ''}>
                     <label for="item_${i}" class= 'dashboard__label'>${item.title}</label>
                     <div class="dashboard__icons">
                         <div class="dashboard__icon pencil" id="edit_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalEdit(event)"><img src="./img/pencil.png"></img></div>
                         <div class="dashboard__icon" id="backet_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDelete(event)"><img src="./img/backet.png"></img></div>
                     </div>
-                </li>
-                `;
+                </li>`;
                 todo.innerHTML = displayMessage;
             });
         } else {
