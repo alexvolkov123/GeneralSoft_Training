@@ -99,8 +99,11 @@ input[type="text"] {
 }
 .dashboard__label {
     display: block; 
-    max-width: 50%; 
+    width: 60%; 
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dashboard__icons {
@@ -336,7 +339,7 @@ input[type=checkbox] + label:before {
     height: 15px;
     padding: 2px;
     margin-right: 10px;
-    text-align: center; 
+    text-align: center;
 }
 
 input[type=checkbox]:checked + label:before {

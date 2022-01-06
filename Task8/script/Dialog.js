@@ -32,19 +32,11 @@ class Dialog {
 
     showError(email, password, name) {
         let error = document.querySelector('.error');
-
-        error.innerHTML = `${errors(email, password, name)}`;
-        error.style.display = 'block';
-
-        setTimeout(()=>{
-            error.style.display = 'none';
-        }, 2000); 
-    }
-
-    showErrorVerificate() {
-        let error = document.querySelector('.error');
-
-        error.innerHTML = `This user is not found`;
+        if(arguments.length == 0) {
+            error.innerHTML = `This user is not found`;
+        } else {
+            error.innerHTML = `${errors(email, password, name)}`;
+        }
         error.style.display = 'block';
 
         setTimeout(()=>{

@@ -7,30 +7,28 @@ let helper = (function() {
         distribution: (event) => {
             event.preventDefault();
             if(document.querySelector('#username') == null) {
-                onAuthorization();
-            } else {
-                onRegistation();
-            }
-        },
-        selectStatus: (id) => {
-            switch(id) {
-                case "All":   
-                    todoList = database.getUserTasks(); 
-                    displayMessages();
-                    break;
-                case "Dones":   
-                    const searchSymbols = document.querySelector('#searching');
-                    if (searchSymbols.value != "") {
-                        todoList = database.getUserTasks(); 
-                        tasks.searchForDones();
+                let email = document.querySelector("#email").value;
+                let password = document.querySelector("#password").value;
+
+                if (validateEmail(email) && validatePassword(password)) {
+                    if(database.verification(email, password)) {
+                        helper.redirect('Dashboard.html');
                     } else {
-                        tasks.searchForDones();
+                        dialog.showError();
                     }
-                    break;
-                case "In progress":   
-                    todoList = database.getUserTasks(); 
-                    tasks.searchForProgress();
-                    break;
+                } else {
+                    dialog.showError(email, password);
+                }
+            } else {
+                let name = document.querySelector("#username").value;
+                let email = document.querySelector("#email").value;
+                let password = document.querySelector("#password").value;
+
+                if (validateUserName(name) && validateEmail(email) && validatePassword(password)) {
+                    database.addUser(name, email, password);
+                } else {
+                    dialog.showError(email, password, name);
+                }
             }
         },
         selectColor: (color) => {

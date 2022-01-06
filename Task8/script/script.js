@@ -1,6 +1,7 @@
 const modalButton = document.querySelector('.modal__button');
 const modal = document.querySelector('.modal');
 let elementChangeId = -1;
+let tasks = new Tasks();
 
 const addButton = document.querySelector('.dashboard__add');
 const task = document.querySelectorAll('.dashboard__task');
@@ -18,11 +19,10 @@ greeting.innerHTML = `Welcome, ${database.users[database.getUserId()].userName},
 
 if(database.getUserTasks() !== null) {
     todoList = database.getUserTasks();
-    displayMessages();
+    tasks.displayMessages();
 } else {
     todoList = [];
 }
-tasks.showModalError(true, 'Success');
 
 tasks.changeColorTheme(database.user.theme)
 selectColor.value = tasks.setColorTheme(database.user.theme);
@@ -44,46 +44,24 @@ modalButton.addEventListener('click', function() {
     }
 });
 
-
-function displayMessages() {
-    let displayMessage = '';
-    if(todoList.length >= 1) {
-        todoList.forEach(function(item, i) {
-            displayMessage += `
-            <li class="dashboard__task" id="${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDescription()">
-                <input type='checkbox' id='item_${i}' ${item.checked ? 'checked' : ''}>
-                <label for="item_${i}" class= 'dashboard__label'>${item.title}</label>
-                <div class="dashboard__icons">
-                    <div class="dashboard__icon pencil" id="edit_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalEdit(event)"><img src="./img/pencil.png"></img></div>
-                    <div class="dashboard__icon" id="backet_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDelete(event)"><img src="./img/backet.png"></img></div>
-                </div>
-            </li>
-            `;
-            todo.innerHTML = displayMessage;
-        });
-    } else {
-        todo.innerHTML = '';
-    }
-}
 logOut.addEventListener('click', function() {
     helper.redirect('sign-in.html');
 })
 cancel.addEventListener('click', () => {tasks.clearTask(); dialog.hideModal();})
-
 searchText.addEventListener('input', (event) => tasks.searchTasks(`${event.target.value}`))
 selectStatus.addEventListener('change', (event) => {
     if(event.target.value == 'All') {
         todoList = database.getUserTasks();
         searchText.value = '';
-        displayMessages();
+        tasks.displayMessages();
     };
-    if(event.target.value == 'Dones') tasks.searchForDones();
-    if(event.target.value == 'In progress') tasks.searchForProgress();
+    if(event.target.value == 'Dones') tasks.searchFor(true);
+    if(event.target.value == 'In progress') tasks.searchFor(false);
 });
 selectColor.addEventListener('change', (event) => helper.selectColor(event.target.value))
 
 //если в нашем списке задач что-то изменяется, то мы узнаем что изменилось
-todo.addEventListener('change', function(event) {
+todo.addEventListener('change', (event) => {
     let idInput = event.target.getAttribute('id');
     let valueLabel = todo.querySelector('[for=' + idInput + ']').innerHTML;
     

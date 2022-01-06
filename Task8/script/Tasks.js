@@ -20,7 +20,7 @@ class Tasks {
         if(database.verificateTaskTitle(title)) {
             if(title != '' && description != '') {
                 let newTask = {
-                    title: title.toLowerCase(),
+                    title: title,
                     description: description,
                     checked: false,
                 };
@@ -28,18 +28,15 @@ class Tasks {
                 todoList.push(newTask);
                 database.setUserTasks(todoList);
                 localStorage.setItem('users', JSON.stringify(database.users));
-                displayMessages();
-                dialog.hideModal();
+                this.displayMessages();
                 this.showModalError(true, 'Success');
             } else {
                 this.showModalError(false, 'You cannot create a task with an empty field');
-                dialog.hideModal();
             }
         } else {
             this.showModalError(false, 'Error, task is exist');
-            dialog.hideModal();
         }
-        
+        dialog.hideModal();
         this.clearTask();
     }
 
@@ -68,22 +65,13 @@ class Tasks {
         let parentId = elem.parentElement.parentElement.getAttribute('id');
 
         if(database.verificateTaskTitle(title)) {
-            
-            todoList[parentId].title = title;
-            todoList[parentId].description = description;
-            database.setUserTasks(todoList);
-            localStorage.setItem('users', JSON.stringify(database.users));
-            displayMessages();
-            dialog.hideModal();
-
-        } else {
-
-            todoList[parentId].description = description;
-            database.setUserTasks(todoList);
-            localStorage.setItem('users', JSON.stringify(database.users));
-            displayMessages();
-            dialog.hideModal();
+            todoList[parentId].title = title; 
         }
+        todoList[parentId].description = description;
+        database.setUserTasks(todoList);
+        localStorage.setItem('users', JSON.stringify(database.users));
+        this.displayMessages();
+        dialog.hideModal();
     }
     
     deleteTask() {
@@ -92,19 +80,13 @@ class Tasks {
             let parentId = elem.parentElement.parentElement.getAttribute('id');
 
             todoList.splice(parentId, 1);
-            
-            database.setUserTasks(todoList);
-            localStorage.setItem('users', JSON.stringify(database.users));
-            displayMessages();
-            dialog.hideModalDelete();
         } else {
             todoList = [];
-
-            database.setUserTasks(todoList);
-            localStorage.setItem('users', JSON.stringify(database.users));
-            displayMessages();
-            dialog.hideModalDelete();
         }
+        database.setUserTasks(todoList);
+        localStorage.setItem('users', JSON.stringify(database.users));
+        this.displayMessages();
+        dialog.hideModalDelete();
     }
 
     showTask() {
@@ -147,39 +129,31 @@ class Tasks {
         if(newSorting !== "") {
             let newTodoList = [];
             todoList.forEach(function(item) {
-                if(item.title.includes(newSorting)) {
+                if(item.title.toLowerCase().includes(newSorting)) {
                     newTodoList.push(item);
                 }
             });
             todoList = newTodoList;
-            displayMessages();
         } else {
             todoList = database.getUserTasks();
             selectStatus.value = "All";
-            displayMessages();
+            
         }
+        this.displayMessages();
     }
 
-    searchForDones() {
+    searchFor(result) {
         let newTodoList = [];
-        todoList.forEach(function(item) {
-            if(item.checked == true) {
-                newTodoList.push(item);
-            }
-        });
+            todoList.forEach(function(item) {
+                if(item.checked == true && result===true) {
+                    newTodoList.push(item);
+                }
+                if(item.checked == false && result===false) {
+                    newTodoList.push(item);
+                }
+            });
         todoList = newTodoList;
-        displayMessages();
-    }
-
-    searchForProgress() {
-        let newTodoList = [];
-        todoList.forEach(function(item) {
-            if(item.checked == false) {
-                newTodoList.push(item);
-            }
-        });
-        todoList = newTodoList;
-        displayMessages();
+        this.displayMessages();
     }
 
     changeColorTheme(color) {
@@ -212,5 +186,26 @@ class Tasks {
         setTimeout(()=>{
             error.style.display = 'none';
         }, 2000); 
+    }
+
+    displayMessages() {
+        let displayMessage = '';
+        if(todoList.length >= 1) {
+            todoList.forEach(function(item, i) {
+                displayMessage += `
+                <li class="dashboard__task" id="${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDescription()">
+                    <input type='checkbox' id='item_${i}' class= 'dashboard__input' ${item.checked ? 'checked' : ''}>
+                    <label for="item_${i}" class= 'dashboard__label'>${item.title}</label>
+                    <div class="dashboard__icons">
+                        <div class="dashboard__icon pencil" id="edit_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalEdit(event)"><img src="./img/pencil.png"></img></div>
+                        <div class="dashboard__icon" id="backet_${i}" onclick="elementChangeId = this.getAttribute('id'); dialog.showModalDelete(event)"><img src="./img/backet.png"></img></div>
+                    </div>
+                </li>
+                `;
+                todo.innerHTML = displayMessage;
+            });
+        } else {
+            todo.innerHTML = '';
+        }
     }
 }
