@@ -124,8 +124,9 @@ class Tasks {
         description.removeAttribute('readonly');
     }
 
-    searchTasks(sorting) {
-        let newSorting = sorting.toLowerCase();
+    searchTasks(text, status) {
+        todoList = database.getUserTasks();
+        let newSorting = text.toLowerCase();
         if(newSorting !== "") {
             let newTodoList = [];
             todoList.forEach(function(item) {
@@ -134,10 +135,31 @@ class Tasks {
                 }
             });
             todoList = newTodoList;
+            if(status !== "") {
+                switch(status) {
+                    case "All":   
+                        this.searchTasks(text, "");
+                        break;
+                    case "Dones":   
+                        this.searchFor(true);
+                        break;
+                    case "In progress":   
+                        this.searchFor(false);
+                        break;
+                }
+            }
         } else {
-            todoList = database.getUserTasks();
-            selectStatus.value = "All";
-            
+            switch(status) {
+                case "All":   
+                    todoList = database.getUserTasks();
+                    break;
+                case "Dones":   
+                    this.searchFor(true);
+                    break;
+                case "In progress":   
+                    this.searchFor(false);
+                    break;
+            }
         }
         this.displayMessages();
     }

@@ -2,18 +2,16 @@ const modalButton = document.querySelector('.modal__button');
 const modal = document.querySelector('.modal');
 let elementChangeId = -1;
 let tasks = new Tasks();
-
 const addButton = document.querySelector('.dashboard__add');
-
 const todo = document.querySelector('.dashboard__todoList');
 const logOut = document.querySelector('.header__button');
 const cancel = document.querySelector('.modal__cancel');
+const selectColor = document.querySelector('#theme');
 const selectStatus = document.querySelector('#status');
 const searchText = document.querySelector('#searching');
-const selectColor = document.querySelector('#theme');
-
+let status = '';
+let text = '';
 let todoList = [];
-
 
 const greeting = document.querySelector('.dashboard__greeting');
 greeting.innerHTML = `Welcome, ${database.users[database.getUserId()].userName}, here are your tasks <br> if you don't see your tasks, just add them`;
@@ -49,15 +47,13 @@ logOut.addEventListener('click', function() {
     helper.redirect('sign-in.html');
 })
 cancel.addEventListener('click', () => {tasks.clearTask(); dialog.hideModal();})
-searchText.addEventListener('input', (event) => tasks.searchTasks(`${event.target.value}`))
+searchText.addEventListener('input', (event) => {
+    text = event.target.value;
+    tasks.searchTasks(text, status);
+})
 selectStatus.addEventListener('change', (event) => {
-    if(event.target.value == 'All') {
-        todoList = database.getUserTasks();
-        searchText.value = '';
-        tasks.displayMessages();
-    };
-    if(event.target.value == 'Dones') tasks.searchFor(true);
-    if(event.target.value == 'In progress') tasks.searchFor(false);
+    status = event.target.value;
+    tasks.searchTasks(text, status);
 });
 selectColor.addEventListener('change', (event) => helper.selectColor(event.target.value))
 
